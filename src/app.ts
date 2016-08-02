@@ -22,4 +22,6 @@ document.onload = () => {
 
     let type: Wechat.NetworkResource = new Wechat.NetworkResource();
 
+    let data: Wechat.LocationData = new Wechat.LocationData();
+
 };
