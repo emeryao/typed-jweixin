@@ -27,7 +27,7 @@ declare namespace Wechat {
         error(callback: (result?: any) => void): void;
 
         /**判断当前客户端版本是否支持指定JS接口 */
-        checkJsApi(param: CheckJsApiParam): void;
+        checkJsApi(param: CheckJsApiData): void;
 
         /**获取"分享到朋友圈"按钮点击状态及自定义分享内容 */
         onMenuShareTimeline(param: ShareData): void;
@@ -141,7 +141,7 @@ declare namespace Wechat {
         jsApiList: Array<string>;
     }
 
-    class CheckResult {
+    interface CheckResult {
         /**
          * 以键值对的形式返回,可用的api值true,不可用为false 
          * 如: {"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
@@ -150,7 +150,7 @@ declare namespace Wechat {
         errMsg: string;
     }
 
-    class CheckJsApiParam {
+    class CheckJsApiData {
         /**需要检测的JS接口列表 */
         jsApiList: Array<string>;
         success: (result?: CheckResult) => void;
@@ -257,7 +257,7 @@ declare namespace Wechat {
         infoUrl: string;
     }
 
-    class LocationResource {
+    interface LocationResource {
         /**纬度,浮点数,范围为90 ~ -90 */
         latitude: number;
         /**经度,浮点数,范围为180 ~ -180 */
@@ -309,7 +309,7 @@ declare namespace Wechat {
         menuList: Array<string>;
     }
 
-    class QRCodeResource {
+    interface QRCodeResource {
         /**当needResult 为 1 时,扫码返回的结果 */
         resultStr: string;
     }
