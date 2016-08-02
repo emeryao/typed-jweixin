@@ -198,7 +198,7 @@ declare namespace Wechat {
     class LocalResource {
         /**需要播放的音频的本地ID,由stopRecord接口获得 */
         localId: string;
-        /**选定照片的本地ID列表，localId可以作为img标签的src属性显示图片 */
+        /**选定照片的本地ID列表,localId可以作为img标签的src属性显示图片 */
         localIds: Array<string>;
     }
 
@@ -225,7 +225,7 @@ declare namespace Wechat {
     }
 
     class TranslateData extends LocalResource {
-        /**默认为1，显示进度提示 */
+        /**默认为1,显示进度提示 */
         isShowProgressTips: number;
         success: (res?: TranslateResource) => void;
     }
@@ -263,7 +263,7 @@ declare namespace Wechat {
         name: string;
         /**地址详情说明 */
         address: string;
-        /**地图缩放级别,整型值,范围从1~28。默认为最大 */
+        /**地图缩放级别,整型值,范围从1~28,默认为最大 */
         scale: number;
         /**在查看位置界面底部显示的超链接,可点击跳转 */
         infoUrl: string;
@@ -386,7 +386,7 @@ declare namespace Wechat {
         nonceStr: string;
         /**统一支付接口返回的prepay_id参数值,提交格式如:prepay_id=*** */
         package: string;
-        /**签名方式，默认为'SHA1',使用新版支付需传入'MD5' */
+        /**签名方式,默认为'SHA1',使用新版支付需传入'MD5' */
         signType: string;
         /**支付签名 */
         paySign: string;
