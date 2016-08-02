@@ -27,7 +27,7 @@ declare namespace Wechat {
         error(callback: (result?: any) => void): void;
 
         /**判断当前客户端版本是否支持指定JS接口 */
-        checkJsApi(param: CheckJsApiParam): void;
+        checkJsApi(param: CheckJsApiData): void;
 
         /**获取"分享到朋友圈"按钮点击状态及自定义分享内容 */
         onMenuShareTimeline(param: ShareData): void;
@@ -121,7 +121,14 @@ declare namespace Wechat {
         chooseWXPay(param: WXPayData): void;
 
         /**开启查找周边ibeacon设备 */
-        startSearchBeacons(param): void;
+        startSearchBeacons(param: BeaconData): void;
+        /**关闭查找周边ibeacon设备 */
+        stopSearchBeacons(callback: { complete: (res?: any) => void }): void;
+        /**监听周边ibeacon设备 */
+        onSearchBeacons(callback: { complete: (argv?: any) => void }): void;
+
+        /**创建企业会话 */
+        openEnterpriseChat(param: EnterpriseChatData): void;
     }
 
     class ConfigData {
@@ -146,7 +153,7 @@ declare namespace Wechat {
         jsApiList: Array<string>;
     }
 
-    class CheckResult {
+    interface CheckResult {
         /**
          * 以键值对的形式返回,可用的api值true,不可用为false 
          * 如: {"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
@@ -155,7 +162,7 @@ declare namespace Wechat {
         errMsg: string;
     }
 
-    class CheckJsApiParam {
+    class CheckJsApiData {
         /**需要检测的JS接口列表 */
         jsApiList: Array<string>;
         success: (result?: CheckResult) => void;
@@ -262,7 +269,7 @@ declare namespace Wechat {
         infoUrl: string;
     }
 
-    class LocationResource {
+    interface LocationResource {
         /**纬度,浮点数,范围为90 ~ -90 */
         latitude: number;
         /**经度,浮点数,范围为180 ~ -180 */
@@ -314,7 +321,7 @@ declare namespace Wechat {
         menuList: Array<string>;
     }
 
-    class QRCodeResource {
+    interface QRCodeResource {
         /**当needResult 为 1 时,扫码返回的结果 */
         resultStr: string;
     }
@@ -392,6 +399,27 @@ declare namespace Wechat {
         ticket: string;
         /**开启查找完成后的回调函数 */
         complete: (argv: any) => void;
+    }
+
+    interface EnterpriseChatError {
+        errMsg: string;
+    }
+
+    class EnterpriseChatData {
+        /**
+         * 必填,参与会话的成员列表
+         * 格式为userid1;userid2;...
+         * 用分号隔开,最大限制为1000个
+         * userid单个时为单聊,多个时为群聊。
+         */
+        userIds: string;
+        /**
+         * 必填,会话名称
+         * 单聊时该参数传入空字符串""即可
+         */
+        groupName: string;
+        success: (res?: any) => void;
+        fail: (res?: EnterpriseChatError) => void;
     }
 }
 
