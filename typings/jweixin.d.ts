@@ -114,9 +114,14 @@ declare namespace Wechat {
         chooseCard(param: ChooseCardData): void;
         /**查看微信卡包中的卡券 */
         openCard(data: CardResource): void;
+        /**核销后再次赠送卡券 */
+        consumeAndShareCard(data: CardResource): void;
 
         /**发起一个微信支付请求 */
         chooseWXPay(param: WXPayData): void;
+
+        /**开启查找周边ibeacon设备 */
+        startSearchBeacons(param): void;
     }
 
     class ConfigData {
@@ -380,6 +385,13 @@ declare namespace Wechat {
         paySign: string;
         /**支付成功后的回调函数 */
         success: (res: any) => void;
+    }
+
+    class BeaconData {
+        /**摇周边的业务ticket,系统自动添加在摇出来的页面链接后面 */
+        ticket: string;
+        /**开启查找完成后的回调函数 */
+        complete: (argv: any) => void;
     }
 }
 
