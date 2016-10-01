@@ -131,7 +131,8 @@ declare namespace Wechat {
         openEnterpriseChat(param: EnterpriseChatData): void;
 
         /**发起获取收货地址共享接口 */
-        openAddress(param: WXAddressParamsData, successCallback?, failCallback?): void;    }
+        openAddress(param: WXAddressParamsData, successCallback?, failCallback?): void;
+    }
 
     class ConfigData {
         /**
@@ -417,7 +418,7 @@ declare namespace Wechat {
         userIds: string;
         /**
          * 必填,会话名称
-         * 单聊时该参数传入空字符串""即可
+         * 单聊时该参数传入空字符串即可
          */
         groupName: string;
         success: (res?: any) => void;
@@ -434,7 +435,7 @@ declare namespace Wechat {
     }
 
     class WXAddressData {
-        err_msg: "edit_address：fail"|"edit_address：ok";
+        err_msg: "edit_address：fail" | "edit_address：ok";
         username: string;
         telNumber: string;
         addressPostalCode: string;
