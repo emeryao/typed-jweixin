@@ -129,6 +129,9 @@ declare namespace Wechat {
 
         /**创建企业会话 */
         openEnterpriseChat(param: EnterpriseChatData): void;
+
+        /**发起获取收货地址共享接口 */
+        openAddress(param: WXAddressParamsData, successCallback?, failCallback?): void;
     }
 
     class ConfigData {
@@ -138,7 +141,7 @@ declare namespace Wechat {
          * 若要查看传入的参数
          * 可以在pc端打开
          * 参数信息会通过log打出
-         * 仅在pc端时才会打印 
+         * 仅在pc端时才会打印
          */
         debug: boolean;
         /**必填,公众号的唯一标识 */
@@ -155,7 +158,7 @@ declare namespace Wechat {
 
     interface CheckResult {
         /**
-         * 以键值对的形式返回,可用的api值true,不可用为false 
+         * 以键值对的形式返回,可用的api值true,不可用为false
          * 如: {"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
          */
         checkResult: Object;
@@ -379,7 +382,7 @@ declare namespace Wechat {
     class WXPayData {
         /**
          * 支付签名时间戳,注意微信jssdk中的所有使用timestamp字段均为小写
-         * 但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符 
+         * 但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
          */
         timestamp: number;
         /**支付签名随机串,不长于 32 位 */
@@ -415,11 +418,32 @@ declare namespace Wechat {
         userIds: string;
         /**
          * 必填,会话名称
-         * 单聊时该参数传入空字符串""即可
+         * 单聊时该参数传入空字符串即可
          */
         groupName: string;
         success: (res?: any) => void;
         fail: (res?: EnterpriseChatError) => void;
+    }
+
+    class WXAddressParamsData {
+        appId: string;
+        scope: "jsapi_address";
+        signType: "sha1";
+        addrSign: string;
+        timeStamp: "";
+        nonceStr: string
+    }
+
+    class WXAddressData {
+        err_msg: "edit_address：fail" | "edit_address：ok";
+        username: string;
+        telNumber: string;
+        addressPostalCode: string;
+        proviceFirstStageName: string;
+        addressCitySecondStageName: string;
+        addressCountiesThirdStageName: string;
+        addressDetailInfo: string;
+        nationalCode: string
     }
 }
 
