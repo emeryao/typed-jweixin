@@ -114,13 +114,24 @@ declare namespace Wechat {
         chooseCard(param: ChooseCardData): void;
         /**查看微信卡包中的卡券 */
         openCard(data: CardResource): void;
+        /**核销后再次赠送卡券 */
+        consumeAndShareCard(data: CardResource): void;
 
         /**发起一个微信支付请求 */
         chooseWXPay(param: WXPayData): void;
 
+        /**开启查找周边ibeacon设备 */
+        startSearchBeacons(param: BeaconData): void;
+        /**关闭查找周边ibeacon设备 */
+        stopSearchBeacons(callback: { complete: (res?: any) => void }): void;
+        /**监听周边ibeacon设备 */
+        onSearchBeacons(callback: { complete: (argv?: any) => void }): void;
+
+        /**创建企业会话 */
+        openEnterpriseChat(param: EnterpriseChatData): void;
+
         /**发起获取收货地址共享接口 */
-        openAddress(param: WXAddressParamsData, successCallback?, failCallback?): void;
-    }
+        openAddress(param: WXAddressParamsData, successCallback?, failCallback?): void;    }
 
     class ConfigData {
         /**
@@ -383,6 +394,34 @@ declare namespace Wechat {
         paySign: string;
         /**支付成功后的回调函数 */
         success: (res: any) => void;
+    }
+
+    class BeaconData {
+        /**摇周边的业务ticket,系统自动添加在摇出来的页面链接后面 */
+        ticket: string;
+        /**开启查找完成后的回调函数 */
+        complete: (argv: any) => void;
+    }
+
+    interface EnterpriseChatError {
+        errMsg: string;
+    }
+
+    class EnterpriseChatData {
+        /**
+         * 必填,参与会话的成员列表
+         * 格式为userid1;userid2;...
+         * 用分号隔开,最大限制为1000个
+         * userid单个时为单聊,多个时为群聊。
+         */
+        userIds: string;
+        /**
+         * 必填,会话名称
+         * 单聊时该参数传入空字符串""即可
+         */
+        groupName: string;
+        success: (res?: any) => void;
+        fail: (res?: EnterpriseChatError) => void;
     }
 
     class WXAddressParamsData {

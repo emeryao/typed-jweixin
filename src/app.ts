@@ -40,4 +40,13 @@ document.onload = () => {
 
     let data: Wechat.LocationData = new Wechat.LocationData();
 
+    let chatData: Wechat.EnterpriseChatData = new Wechat.EnterpriseChatData();
+    chatData.fail = (res) => {
+        if (res.errMsg.indexOf('function not exist') > -1) {
+            alert('版本过低请升级');
+        }
+    }
+
+    wx.openEnterpriseChat(chatData);
+
 };
