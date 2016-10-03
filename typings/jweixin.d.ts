@@ -131,7 +131,7 @@ declare namespace Wechat {
         openEnterpriseChat(param: EnterpriseChatData): void;
 
         /**发起获取收货地址共享接口 */
-        openAddress(param: WXAddressParamsData, successCallback?, failCallback?): void;
+        openAddress(param: { successCallback?: (res?: WXAddressData) => void, failCallback?: (res?: WXAddressData) => void }): void;
     }
 
     class ConfigData {
@@ -425,25 +425,25 @@ declare namespace Wechat {
         fail: (res?: EnterpriseChatError) => void;
     }
 
-    class WXAddressParamsData {
-        appId: string;
-        scope: "jsapi_address";
-        signType: "sha1";
-        addrSign: string;
-        timeStamp: "";
-        nonceStr: string
-    }
-
-    class WXAddressData {
-        err_msg: "edit_address：fail" | "edit_address：ok";
-        username: string;
+    interface WXAddressData {
+        /**获取编辑收货地址成功返回'openAddress:ok' */
+        errMsg: string;
+        /**收货人姓名 */
+        userName: string;
+        /**邮编 */
+        postalCode: string;
+        /**国标收货地址第一级地址(省) */
+        provinceName: string;
+        /**国标收货地址第二级地址(市) */
+        cityName: string;
+        /**国标收货地址第三级地址(国家) */
+        countryName: string;
+        /**详细收货地址信息 */
+        detailInfo: string;
+        /**收货地址国家码 */
+        nationalCode: string;
+        /**收货人手机号码 */
         telNumber: string;
-        addressPostalCode: string;
-        proviceFirstStageName: string;
-        addressCitySecondStageName: string;
-        addressCountiesThirdStageName: string;
-        addressDetailInfo: string;
-        nationalCode: string
     }
 }
 
