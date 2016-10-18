@@ -134,7 +134,7 @@ declare namespace Wechat {
         openAddress(param: { successCallback?: (res?: WXAddressData) => void, failCallback?: (res?: WXAddressData) => void }): void;
     }
 
-    class ConfigData {
+    interface ConfigData {
         /**
          * 开启调试模式
          * 调用的所有api的返回值会在客户端alert出来
@@ -143,17 +143,17 @@ declare namespace Wechat {
          * 参数信息会通过log打出
          * 仅在pc端时才会打印
          */
-        debug: boolean;
+        debug?: boolean;
         /**必填,公众号的唯一标识 */
-        appId: string;
+        appId?: string;
         /**必填,生成签名的时间戳 */
-        timestamp: number;
+        timestamp?: number;
         /**必填,生成签名的随机串 */
-        nonceStr: string;
+        nonceStr?: string;
         /**必填,签名 */
-        signature: string;
+        signature?: string;
         /**必填,需要使用的JS接口列表 */
-        jsApiList: Array<string>;
+        jsApiList?: Array<string>;
     }
 
     interface CheckResult {
@@ -161,138 +161,138 @@ declare namespace Wechat {
          * 以键值对的形式返回,可用的api值true,不可用为false
          * 如: {"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
          */
-        checkResult: Object;
-        errMsg: string;
+        checkResult?: Object;
+        errMsg?: string;
     }
 
-    class CheckJsApiData {
+    interface CheckJsApiData {
         /**需要检测的JS接口列表 */
-        jsApiList: Array<string>;
-        success: (result?: CheckResult) => void;
+        jsApiList?: Array<string>;
+        success?: (result?: CheckResult) => void;
     }
 
-    class ShareData {
+    interface ShareData {
         /**分享标题 */
-        title: string;
+        title?: string;
         /**分享链接 */
-        link: string;
+        link?: string;
         /**分享图标 */
-        imgUrl: string;
+        imgUrl?: string;
         /**用户确认分享后执行的回调函数 */
-        success: () => void;
+        success?: () => void;
         /**用户取消分享后执行的回调函数 */
-        cancel: () => void;
+        cancel?: () => void;
     }
 
-    class MessageShareData extends ShareData {
+    interface MessageShareData extends ShareData {
         /**分享描述 */
-        desc: string;
+        desc?: string;
         /** 分享类型:music,video或link,不填默认为link */
-        type: string;
+        type?: string;
         /**如果type是music或video,则要提供数据链接,默认为空 */
-        dataUrl: string;
+        dataUrl?: string;
     }
 
-    class QQShareData extends ShareData {
+    interface QQShareData extends ShareData {
         /**分享描述 */
-        desc: string;
+        desc?: string;
     }
 
-    class LocalResource {
+    interface LocalResource {
         /**需要播放的音频的本地ID,由stopRecord接口获得 */
-        localId: string;
+        localId?: string;
         /**选定照片的本地ID列表,localId可以作为img标签的src属性显示图片 */
-        localIds: Array<string>;
+        localIds?: Array<string>;
     }
 
-    class ServerResource {
+    interface ServerResource {
         /**需要下载的音频的服务器端ID,由uploadVoice接口获得 */
-        serverId: string;
+        serverId?: string;
     }
 
-    class UploadResource extends LocalResource {
+    interface UploadResource extends LocalResource {
         /**默认为1,显示进度提示 */
-        isShowProgressTips: number;
-        success: (res?: ServerResource) => void;
+        isShowProgressTips?: number;
+        success?: (res?: ServerResource) => void;
     }
 
-    class DownloadResource extends ServerResource {
+    interface DownloadResource extends ServerResource {
         /**默认为1,显示进度提示 */
-        isShowProgressTips: number;
-        success: (res?: LocalResource) => void;
+        isShowProgressTips?: number;
+        success?: (res?: LocalResource) => void;
     }
 
-    class TranslateResource {
+    interface TranslateResource {
         /**语音识别的结果 */
-        translateResult: string;
+        translateResult?: string;
     }
 
-    class TranslateData extends LocalResource {
+    interface TranslateData extends LocalResource {
         /**默认为1,显示进度提示 */
-        isShowProgressTips: number;
-        success: (res?: TranslateResource) => void;
+        isShowProgressTips?: number;
+        success?: (res?: TranslateResource) => void;
     }
 
-    class ChooseImageData {
+    interface ChooseImageData {
         /**默认9 */
-        count: number;
+        count?: number;
         /**['original', 'compressed'],可以指定是原图还是压缩图,默认二者都有 */
-        sizeType: Array<string>;
+        sizeType?: Array<string>;
         /**['album', 'camera'],可以指定来源是相册还是相机,默认二者都有 */
-        sourceType: Array<string>;
-        success: (res?: LocalResource) => void;
+        sourceType?: Array<string>;
+        success?: (res?: LocalResource) => void;
     }
 
-    class PreviewImageData {
+    interface PreviewImageData {
         /**当前显示图片的http链接 */
-        current: string;
+        current?: string;
         /**需要预览的图片http链接列表 */
-        urls: Array<string>;
+        urls?: Array<string>;
     }
 
-    class NetworkResource {
+    interface NetworkResource {
         /**
          * value should be one of 2g,3g,4g and wifi
          */
-        networkType: string;
+        networkType?: string;
     }
 
-    class LocationData {
+    interface LocationData {
         /**纬度,浮点数,范围为90 ~ -90 */
-        latitude: number;
+        latitude?: number;
         /**经度,浮点数,范围为180 ~ -180 */
-        longitude: number;
+        longitude?: number;
         /**位置名 */
-        name: string;
+        name?: string;
         /**地址详情说明 */
-        address: string;
+        address?: string;
         /**地图缩放级别,整型值,范围从1~28,默认为最大 */
-        scale: number;
+        scale?: number;
         /**在查看位置界面底部显示的超链接,可点击跳转 */
-        infoUrl: string;
+        infoUrl?: string;
     }
 
     interface LocationResource {
         /**纬度,浮点数,范围为90 ~ -90 */
-        latitude: number;
+        latitude?: number;
         /**经度,浮点数,范围为180 ~ -180 */
-        longitude: number;
+        longitude?: number;
         /**速度,以米/每秒计 */
-        speed: number;
+        speed?: number;
         /**位置精度 */
-        accuracy: number;
+        accuracy?: number;
     }
 
-    class GetLocationParam {
+    interface GetLocationParam {
         /**
          * 默认为wgs84的gps坐标
          * 如果要返回直接给openLocation用的火星坐标,可传入'gcj02'
          */
-        type: string;
-        success: (res: LocationResource) => void;
+        type?: string;
+        success?: (res: LocationResource) => void;
     }
 
-    class MenuItemData {
+    interface MenuItemData {
         /**
          * * 基本类
          *  * 举报: "menuItem:exposeArticle"
@@ -321,129 +321,129 @@ declare namespace Wechat {
          *  * 邮件: "menuItem:share:email"
          *  * 一些特殊公众号: "menuItem:share:brand"
          */
-        menuList: Array<string>;
+        menuList?: Array<string>;
     }
 
     interface QRCodeResource {
         /**当needResult 为 1 时,扫码返回的结果 */
-        resultStr: string;
+        resultStr?: string;
     }
 
-    class ScanQRCodeData {
+    interface ScanQRCodeData {
         /**默认为0,扫描结果由微信处理,1则直接返回扫描结果 */
-        needResult: number;
+        needResult?: number;
         /**["qrCode","barCode"],可以指定扫二维码还是一维码,默认二者都有 */
-        scanType: Array<string>;
-        success: (res: QRCodeResource) => void;
+        scanType?: Array<string>;
+        success?: (res?: QRCodeResource) => void;
     }
 
-    class ProductSpecific {
+    interface ProductSpecific {
         /**商品id */
-        productId: string;
+        productId?: string;
         /**0:默认值,普通商品详情页,1:扫一扫商品详情页,2:小店商品详情页 */
-        viewType: string;
+        viewType?: string;
     }
 
-    class CardSpecific {
-        cardId: string;
-        cardExt: string;
+    interface CardSpecific {
+        cardId?: string;
+        cardExt?: string;
     }
 
-    class CardResource {
+    interface CardResource {
         /**卡券列表 */
-        cardList: Array<CardSpecific>;
+        cardList?: Array<CardSpecific>;
     }
 
-    class AddCardData {
+    interface AddCardData {
         /**需要添加的卡券列表 */
-        cardList: Array<CardSpecific>;
-        success: (res: CardResource) => void;
+        cardList?: Array<CardSpecific>;
+        success?: (res?: CardResource) => void;
     }
 
-    class ChooseCardData {
+    interface ChooseCardData {
         /**门店Id */
-        shopId: string;
+        shopId?: string;
         /**卡券类型 */
-        cardType: string;
+        cardType?: string;
         /**卡券Id */
-        cardId: string;
+        cardId?: string;
         /**卡券签名时间戳 */
-        timestamp: number;
+        timestamp?: number;
         /**卡券签名随机串 */
-        nonceStr: string;
+        nonceStr?: string;
         /** 签名方式,默认'SHA1' */
-        signType: string;
+        signType?: string;
         /**卡券签名 */
-        cardSign: string;
+        cardSign?: string;
         /**用户选中的卡券列表信息 */
-        success: (res: CardResource) => void;
+        success?: (res?: CardResource) => void;
     }
 
-    class WXPayData {
+    interface WXPayData {
         /**
          * 支付签名时间戳,注意微信jssdk中的所有使用timestamp字段均为小写
          * 但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
          */
-        timestamp: number;
+        timestamp?: number;
         /**支付签名随机串,不长于 32 位 */
-        nonceStr: string;
-        /**统一支付接口返回的prepay_id参数值,提交格式如:prepay_id=*** */
-        package: string;
+        nonceStr?: string;
+        /**统一支付接口返回的prepay_id参数值,提交格式如?:prepay_id=*** */
+        package?: string;
         /**签名方式,默认为'SHA1',使用新版支付需传入'MD5' */
-        signType: string;
+        signType?: string;
         /**支付签名 */
-        paySign: string;
+        paySign?: string;
         /**支付成功后的回调函数 */
-        success: (res: any) => void;
+        success?: (res?: any) => void;
     }
 
-    class BeaconData {
+    interface BeaconData {
         /**摇周边的业务ticket,系统自动添加在摇出来的页面链接后面 */
-        ticket: string;
+        ticket?: string;
         /**开启查找完成后的回调函数 */
-        complete: (argv: any) => void;
+        complete?: (argv?: any) => void;
     }
 
     interface EnterpriseChatError {
-        errMsg: string;
+        errMsg?: string;
     }
 
-    class EnterpriseChatData {
+    interface EnterpriseChatData {
         /**
          * 必填,参与会话的成员列表
          * 格式为userid1;userid2;...
          * 用分号隔开,最大限制为1000个
          * userid单个时为单聊,多个时为群聊。
          */
-        userIds: string;
+        userIds?: string;
         /**
          * 必填,会话名称
          * 单聊时该参数传入空字符串即可
          */
-        groupName: string;
-        success: (res?: any) => void;
-        fail: (res?: EnterpriseChatError) => void;
+        groupName?: string;
+        success?: (res?: any) => void;
+        fail?: (res?: EnterpriseChatError) => void;
     }
 
     interface WXAddressData {
         /**获取编辑收货地址成功返回'openAddress:ok' */
-        errMsg: string;
+        errMsg?: string;
         /**收货人姓名 */
-        userName: string;
+        userName?: string;
         /**邮编 */
-        postalCode: string;
+        postalCode?: string;
         /**国标收货地址第一级地址(省) */
-        provinceName: string;
+        provinceName?: string;
         /**国标收货地址第二级地址(市) */
-        cityName: string;
+        cityName?: string;
         /**国标收货地址第三级地址(国家) */
-        countryName: string;
+        countryName?: string;
         /**详细收货地址信息 */
-        detailInfo: string;
+        detailInfo?: string;
         /**收货地址国家码 */
-        nationalCode: string;
+        nationalCode?: string;
         /**收货人手机号码 */
-        telNumber: string;
+        telNumber?: string;
     }
 }
 
