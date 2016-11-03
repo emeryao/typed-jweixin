@@ -1,5 +1,5 @@
 document.onload = () => {
-    let configData: Wechat.ConfigData = new Wechat.ConfigData();
+    let configData: Wechat.ConfigData = {};
     configData.appId = 'appid';
     configData.nonceStr = 'nonceStr';
     configData.signature = 'signature';
@@ -24,7 +24,7 @@ document.onload = () => {
         }
     });
 
-    let shareData: Wechat.ShareData = new Wechat.ShareData();
+    let shareData: Wechat.ShareData = {};
     shareData.imgUrl = 'imgUrl';
     shareData.link = 'link';
     shareData.title = 'title';
@@ -36,8 +36,17 @@ document.onload = () => {
     }
     wx.onMenuShareTimeline(shareData);
 
-    let type: Wechat.NetworkResource = new Wechat.NetworkResource();
+    let type: Wechat.NetworkResource = {};
 
-    let data: Wechat.LocationData = new Wechat.LocationData();
+    let data: Wechat.LocationData = {};
+
+    let chatData: Wechat.EnterpriseChatData = {};
+    chatData.fail = (res) => {
+        if (res.errMsg.indexOf('function not exist') > -1) {
+            alert('版本过低请升级');
+        }
+    }
+
+    wx.openEnterpriseChat(chatData);
 
 };

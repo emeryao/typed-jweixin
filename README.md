@@ -22,7 +22,7 @@
 ## Sample Code
 * Config
 ```typescript
-let configData: Wechat.ConfigData = new Wechat.ConfigData();
+let configData: Wechat.ConfigData = {};
 configData.appId = 'appid';
 configData.nonceStr = 'nonceStr';
 configData.signature = 'signature';
@@ -31,7 +31,7 @@ wx.config(configData);
 ```
 * Share Timeline
 ```typescript
-let shareData: Wechat.ShareData = new Wechat.ShareData();
+let shareData: Wechat.ShareData = {};
 shareData.imgUrl = 'imgUrl';
 shareData.link = 'link';
 shareData.title = 'title';
