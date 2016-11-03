@@ -119,7 +119,7 @@ declare namespace Wechat {
         chooseWXPay(param: WXPayData): void;
 
         /**发起获取收货地址共享接口 */
-        openAddress(param: WXAddressParamsData, successCallback?, failCallback?): void;
+        openAddress(options: WXAddressParamsData): void;
     }
 
     class ConfigData {
@@ -372,7 +372,7 @@ declare namespace Wechat {
          * 支付签名时间戳,注意微信jssdk中的所有使用timestamp字段均为小写
          * 但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
          */
-        timestamp: number;
+        timestamp: string;
         /**支付签名随机串,不长于 32 位 */
         nonceStr: string;
         /**统一支付接口返回的prepay_id参数值,提交格式如:prepay_id=*** */
@@ -386,24 +386,20 @@ declare namespace Wechat {
     }
 
     class WXAddressParamsData {
-        appId: string;
-        scope: "jsapi_address";
-        signType: "sha1";
-        addrSign: string;
-        timeStamp: "";
-        nonceStr: string
+        success: (res: WXAddressData) => any;
+        cancel: (args) => any;
     }
 
     class WXAddressData {
-        err_msg: "edit_address：fail"|"edit_address：ok";
+        errMsg: "openAddress:fail"|"openAddress:ok";
         username: string;
         telNumber: string;
-        addressPostalCode: string;
-        proviceFirstStageName: string;
-        addressCitySecondStageName: string;
-        addressCountiesThirdStageName: string;
-        addressDetailInfo: string;
-        nationalCode: string
+        cityName: string;
+        countryName: string;
+        detailInfo: string;
+        nationCode: string;
+        postalCode: string;
+        provinceName: string
     }
 }
 
