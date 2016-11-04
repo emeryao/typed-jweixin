@@ -131,7 +131,7 @@ declare namespace Wechat {
         openEnterpriseChat(param: EnterpriseChatData): void;
 
         /**发起获取收货地址共享接口 */
-        openAddress(param: { successCallback?: (res?: WXAddressData) => void, failCallback?: (res?: WXAddressData) => void }): void;
+        openAddress(options: WXAddressParamsData): void;
     }
 
     interface ConfigData {
@@ -384,7 +384,7 @@ declare namespace Wechat {
          * 支付签名时间戳,注意微信jssdk中的所有使用timestamp字段均为小写
          * 但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
          */
-        timestamp?: number;
+        timestamp?: string;
         /**支付签名随机串,不长于 32 位 */
         nonceStr?: string;
         /**统一支付接口返回的prepay_id参数值,提交格式如?:prepay_id=*** */
@@ -395,6 +395,11 @@ declare namespace Wechat {
         paySign?: string;
         /**支付成功后的回调函数 */
         success?: (res?: any) => void;
+    }
+
+    interface WXAddressParamsData {
+        success: (res: WXAddressData) => any;
+        cancel: (args) => any;
     }
 
     interface BeaconData {
@@ -426,24 +431,15 @@ declare namespace Wechat {
     }
 
     interface WXAddressData {
-        /**获取编辑收货地址成功返回'openAddress:ok' */
-        errMsg?: string;
-        /**收货人姓名 */
-        userName?: string;
-        /**邮编 */
-        postalCode?: string;
-        /**国标收货地址第一级地址(省) */
-        provinceName?: string;
-        /**国标收货地址第二级地址(市) */
-        cityName?: string;
-        /**国标收货地址第三级地址(国家) */
-        countryName?: string;
-        /**详细收货地址信息 */
-        detailInfo?: string;
-        /**收货地址国家码 */
-        nationalCode?: string;
-        /**收货人手机号码 */
+        errMsg?: "openAddress:fail"|"openAddress:ok";
+        username?: string;
         telNumber?: string;
+        cityName?: string;
+        countryName?: string;
+        detailInfo?: string;
+        nationCode?: string;
+        postalCode?: string;
+        provinceName?: string
     }
 }
 
