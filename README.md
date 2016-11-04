@@ -43,3 +43,6 @@ shareData.cancel = () => {
 }
 wx.onMenuShareTimeline(shareData);
 ```
+
+## Last Update
+`2016.11.04`
