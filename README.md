@@ -44,5 +44,11 @@ shareData.cancel = () => {
 wx.onMenuShareTimeline(shareData);
 ```
 
+## Contributors
+> Thanks for your contributions
+
+[@Emeryao](https://github.com/Emeryao)  
+[@neoblackcap](https://github.com/neoblackcap)
+
 ## Last Update
 `2016.11.04`
