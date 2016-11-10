@@ -6,7 +6,7 @@
 * Written with **[VS Code](https://code.visualstudio.com/)**
 
 ## Usage
-* Get the [declaration file](./typings/jweixin.d.ts) and copy/paste it under the `typings` folder
+* Get the [declaration file](./jweixin.d.ts) and copy/paste it under the `typings` folder
 * Reference the `jweixin.d.ts` file by adding the following code to `typings/index.d.ts`
 ```xml
 /// <reference path="./jweixin.d.ts" />
