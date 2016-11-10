@@ -6,11 +6,15 @@
 * Written with **[VS Code](https://code.visualstudio.com/)**
 
 ## Install
-With [`typings`](https://github.com/typings/typings) installed
-```batch
-typings install global~jweixin -SG
-```
-Or find the declaration [file](./jweixin.d.ts) and include it to your project
+* With [`typings`](https://github.com/typings/typings) installed
+    ```batch
+    typings install global~jweixin -SG
+    ```
+    Or
+    ```batch
+    typings install github:Emeryao/typed-jweixin -SG
+    ```
+* Or find the declaration [file](./jweixin.d.ts) and include it to your project
 
 * Then start coding with the power of **[IntelliSense](https://code.visualstudio.com/#meet-intellisense)** of VS Code
 
