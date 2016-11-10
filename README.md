@@ -1,22 +1,17 @@
-# WechatJSSDK.d.ts
+# typed-jweixin
 [TypeScript](http://www.typescriptlang.org/index.html) [declaration file](http://www.typescriptlang.org/docs/handbook/writing-declaration-files.html) for Wexin JSSDK
 
 ## About
-* Based on Weixin JSSDK and it's [document](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
+* Based on Weixin JSSDK and it's [documentation](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
 * Written with **[VS Code](https://code.visualstudio.com/)**
 
-## Usage
-* Get the [declaration file](./jweixin.d.ts) and copy/paste it under the `typings` folder
-* Reference the `jweixin.d.ts` file by adding the following code to `typings/index.d.ts`
-```xml
-/// <reference path="./jweixin.d.ts" />
+## Install
+With [`typings`](https://github.com/typings/typings) installed
+```batch
+typings install global~jweixin -SG
 ```
-* Add the declaration file **if** there is a `file` property in the `tsconfig.json` like below
-```json
- "files": [
-    "typings/jweixin.d.ts"
-    ]
-```
+Or find the declaration [file](./jweixin.d.ts) and include it to your project
+
 * Then start coding with the power of **[IntelliSense](https://code.visualstudio.com/#meet-intellisense)** of VS Code
 
 ## Sample Code
@@ -51,4 +46,4 @@ wx.onMenuShareTimeline(shareData);
 [@neoblackcap](https://github.com/neoblackcap)
 
 ## Last Update
-`2016.11.04`
+`2016.11.10`
