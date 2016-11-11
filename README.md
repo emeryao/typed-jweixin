@@ -6,11 +6,12 @@
 * Written with **[VS Code](https://code.visualstudio.com/)**
 
 ## Install
-* With [`typings`](https://github.com/typings/typings) installed
+* With [`typings`](https://github.com/typings/typings) installed  
+
     ```batch
     typings install global~jweixin -SG
-    ```
-    Or
+    ```  
+    Or  
     ```batch
     typings install github:Emeryao/typed-jweixin -SG
     ```
