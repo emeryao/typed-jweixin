@@ -130,7 +130,15 @@ declare namespace Wechat {
         openAddress(param: WXAddressParam): void;
     }
 
-    interface ConfigData {
+    interface WxParamBase {
+        success?: (res?: { errMsg: string }) => void;
+        fail?: (res?: { errMsg: string }) => void;
+        complete?: (res?: { errMsg: string }) => void;
+        cancel?: (res?: { errMsg: string }) => void;
+        trigger?: (res?: { errMsg: string }) => void;
+    }
+
+    interface ConfigData extends WxParamBase {
         /**
          * 开启调试模式
          * 调用的所有api的返回值会在客户端alert出来
@@ -161,13 +169,13 @@ declare namespace Wechat {
         errMsg?: string;
     }
 
-    interface CheckJsApiData {
+    interface CheckJsApiData extends WxParamBase {
         /**需要检测的JS接口列表 */
         jsApiList?: Array<string>;
         success?: (result?: CheckResult) => void;
     }
 
-    interface ShareData {
+    interface ShareData extends WxParamBase {
         /**分享标题 */
         title?: string;
         /**分享链接 */
@@ -206,13 +214,13 @@ declare namespace Wechat {
         serverId?: string;
     }
 
-    interface UploadResource extends LocalResource {
+    interface UploadResource extends LocalResource, WxParamBase {
         /**默认为1,显示进度提示 */
         isShowProgressTips?: number;
         success?: (res?: ServerResource) => void;
     }
 
-    interface DownloadResource extends ServerResource {
+    interface DownloadResource extends ServerResource, WxParamBase {
         /**默认为1,显示进度提示 */
         isShowProgressTips?: number;
         success?: (res?: LocalResource) => void;
@@ -223,13 +231,13 @@ declare namespace Wechat {
         translateResult?: string;
     }
 
-    interface TranslateData extends LocalResource {
+    interface TranslateData extends LocalResource, WxParamBase {
         /**默认为1,显示进度提示 */
         isShowProgressTips?: number;
         success?: (res?: TranslateResource) => void;
     }
 
-    interface ChooseImageData {
+    interface ChooseImageData extends WxParamBase {
         /**默认9 */
         count?: number;
         /**['original', 'compressed'],可以指定是原图还是压缩图,默认二者都有 */
@@ -239,7 +247,7 @@ declare namespace Wechat {
         success?: (res?: LocalResource) => void;
     }
 
-    interface PreviewImageData {
+    interface PreviewImageData extends WxParamBase {
         /**当前显示图片的http链接 */
         current?: string;
         /**需要预览的图片http链接列表 */
@@ -253,7 +261,7 @@ declare namespace Wechat {
         networkType?: string;
     }
 
-    interface LocationData {
+    interface LocationData extends WxParamBase {
         /**纬度,浮点数,范围为90 ~ -90 */
         latitude?: number;
         /**经度,浮点数,范围为180 ~ -180 */
@@ -279,7 +287,7 @@ declare namespace Wechat {
         accuracy?: number;
     }
 
-    interface GetLocationParam {
+    interface GetLocationParam extends WxParamBase {
         /**
          * 默认为wgs84的gps坐标
          * 如果要返回直接给openLocation用的火星坐标,可传入'gcj02'
@@ -288,7 +296,7 @@ declare namespace Wechat {
         success?: (res: LocationResource) => void;
     }
 
-    interface MenuItemData {
+    interface MenuItemData extends WxParamBase {
         /**
          * * 基本类
          *  * 举报: "menuItem:exposeArticle"
@@ -325,7 +333,7 @@ declare namespace Wechat {
         resultStr?: string;
     }
 
-    interface ScanQRCodeData {
+    interface ScanQRCodeData extends WxParamBase {
         /**默认为0,扫描结果由微信处理,1则直接返回扫描结果 */
         needResult?: number;
         /**["qrCode","barCode"],可以指定扫二维码还是一维码,默认二者都有 */
@@ -333,7 +341,7 @@ declare namespace Wechat {
         success?: (res?: QRCodeResource) => void;
     }
 
-    interface ProductSpecific {
+    interface ProductSpecific extends WxParamBase {
         /**商品id */
         productId?: string;
         /**0:默认值,普通商品详情页,1:扫一扫商品详情页,2:小店商品详情页 */
@@ -350,13 +358,13 @@ declare namespace Wechat {
         cardList?: Array<CardSpecific>;
     }
 
-    interface AddCardData {
+    interface AddCardData extends WxParamBase {
         /**需要添加的卡券列表 */
         cardList?: Array<CardSpecific>;
         success?: (res?: CardResource) => void;
     }
 
-    interface ChooseCardData {
+    interface ChooseCardData extends WxParamBase {
         /**门店Id */
         shopId?: string;
         /**卡券类型 */
@@ -375,7 +383,7 @@ declare namespace Wechat {
         success?: (res?: CardResource) => void;
     }
 
-    interface WXPayData {
+    interface WXPayData extends WxParamBase {
         /**
          * 支付签名时间戳,注意微信jssdk中的所有使用timestamp字段均为小写
          * 但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
@@ -393,12 +401,12 @@ declare namespace Wechat {
         success?: (res?: any) => void;
     }
 
-    interface WXAddressParam {
+    interface WXAddressParam extends WxParamBase {
         success: (res?: WXAddressData) => void;
         cancel: (res?) => void;
     }
 
-    interface BeaconData {
+    interface BeaconData extends WxParamBase {
         /**摇周边的业务ticket,系统自动添加在摇出来的页面链接后面 */
         ticket?: string;
         /**开启查找完成后的回调函数 */
@@ -409,7 +417,7 @@ declare namespace Wechat {
         errMsg?: string;
     }
 
-    interface EnterpriseChatData {
+    interface EnterpriseChatData extends WxParamBase {
         /**
          * 必填,参与会话的成员列表
          * 格式为userid1;userid2;...

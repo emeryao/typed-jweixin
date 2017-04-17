@@ -3,16 +3,11 @@
 
 ## About
 * Based on Weixin JSSDK and it's [documentation](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
-* Written with **[VS Code](https://code.visualstudio.com/)**
+* Written using **[VS Code](https://code.visualstudio.com/)**
 
 ## Install
 * With [`typings`](https://github.com/typings/typings) installed  
-
-    ```batch
-    typings install global~jweixin -SG
-    ```  
-    Or  
-    ```batch
+   ```batch
     typings install github:Emeryao/typed-jweixin -SG
     ```
 * Or find the declaration [file](./jweixin.d.ts) and include it to your project
@@ -51,4 +46,4 @@ wx.onMenuShareTimeline(shareData);
 [@neoblackcap](https://github.com/neoblackcap)
 
 ## Last Update
-`2016.11.10`
+`2017.04.17`
