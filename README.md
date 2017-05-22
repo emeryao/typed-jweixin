@@ -6,6 +6,10 @@
 * Written using **[VS Code](https://code.visualstudio.com/)**
 
 ## Install
+* With [`npm`](https://www.npmjs.com/) installed  
+   ```batch
+    npm install typed-jweixin --save-dev
+    ```
 * With [`typings`](https://github.com/typings/typings) installed  
    ```batch
     typings install github:Emeryao/typed-jweixin -SG
@@ -46,4 +50,4 @@ wx.onMenuShareTimeline(shareData);
 [@neoblackcap](https://github.com/neoblackcap)
 
 ## Last Update
-`2017.04.17`
+`2017.05.22`
