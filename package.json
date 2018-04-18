@@ -1,27 +1,30 @@
 {
-  "name": "typed-jweixin",
-  "version": "1.0.0",
-  "description": "TypeScript declaration for Weixin JSSDK(jweixin)",
-  "main": "jweixin.d.ts",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Emeryao/typed-jweixin.git"
-  },
-  "keywords": [
-    "jweixin",
-    "weixin",
-    "wechat"
-  ],
-  "author": "Emeryao",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Emeryao/typed-jweixin/issues"
-  },
-  "homepage": "https://github.com/Emeryao/typed-jweixin#readme"
+    "author": "Emeryao",
+    "bugs": {
+        "url": "https://github.com/Emeryao/typed-jweixin/issues"
+    },
+    "description": "TypeScript declaration for Weixin JSSDK(jweixin)",
+    "directories": {
+        "lib": "lib"
+    },
+    "homepage": "https://github.com/Emeryao/typed-jweixin#readme",
+    "keywords": [
+        "jweixin",
+        "weixin",
+        "wechat",
+        "types",
+        "typed",
+        "typescript"
+    ],
+    "license": "MIT",
+    "main": "jweixin.d.ts",
+    "name": "typed-jweixin",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Emeryao/typed-jweixin.git"
+    },
+    "scripts": {
+        "postinstall": "node scripts/postinstall.js"
+    },
+    "version": "1.0.0-update.1"
 }

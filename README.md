@@ -7,12 +7,12 @@
 
 ## Install
 * With [`npm`](https://www.npmjs.com/) installed  
-   ```batch
-    npm install typed-jweixin --save-dev
+    ```sh
+    $ npm install typed-jweixin --save-dev
     ```
 * With [`typings`](https://github.com/typings/typings) installed  
-   ```batch
-    typings install github:Emeryao/typed-jweixin -SG
+    ```sh
+    $ typings install github:Emeryao/typed-jweixin -SG
     ```
 * Or find the declaration [file](./jweixin.d.ts) and include it to your project
 
