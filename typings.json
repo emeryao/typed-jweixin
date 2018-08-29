@@ -3,5 +3,5 @@
     "main": "jweixin.d.ts",
     "homepage": "https://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html",
     "global": true,
-    "version": "1.1.0"
+    "version": "1.2.0"
 }

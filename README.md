@@ -2,7 +2,7 @@
 [TypeScript](http://www.typescriptlang.org/index.html) [declaration file](http://www.typescriptlang.org/docs/handbook/writing-declaration-files.html) for Wexin JSSDK
 
 ## About
-* Based on Weixin JSSDK and it's [documentation](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
+* Based on [Weixin JSSDK](http://res.wx.qq.com/open/js/jweixin-1.2.0.js) and it's [documentation](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
 * Written using **[VS Code](https://code.visualstudio.com/)**
 
 ## Install
@@ -50,4 +50,4 @@ wx.onMenuShareTimeline(shareData);
 [@neoblackcap](https://github.com/neoblackcap)
 
 ## Last Update
-`2017.05.22`
+`2018.08.29`

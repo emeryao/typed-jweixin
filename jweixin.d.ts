@@ -130,12 +130,16 @@ declare namespace Wechat {
         openAddress(param: WXAddressParam): void;
     }
 
+    interface WxResBase {
+        errMsg?: string;
+    }
+
     interface WxParamBase {
-        success?: (res?: { errMsg: string }) => void;
-        fail?: (res?: { errMsg: string }) => void;
-        complete?: (res?: { errMsg: string }) => void;
-        cancel?: (res?: { errMsg: string }) => void;
-        trigger?: (res?: { errMsg: string }) => void;
+        success?: (res?: WxResBase) => void;
+        fail?: (res?: WxResBase) => void;
+        complete?: (res?: WxResBase) => void;
+        cancel?: (res?: WxResBase) => void;
+        trigger?: (res?: WxResBase) => void;
     }
 
     interface ConfigData extends WxParamBase {
@@ -160,13 +164,12 @@ declare namespace Wechat {
         jsApiList?: Array<string>;
     }
 
-    interface CheckResult {
+    interface CheckResult extends WxResBase {
         /**
          * 以键值对的形式返回,可用的api值true,不可用为false
          * 如: {"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
          */
         checkResult?: Object;
-        errMsg?: string;
     }
 
     interface CheckJsApiData extends WxParamBase {
@@ -202,14 +205,14 @@ declare namespace Wechat {
         desc?: string;
     }
 
-    interface LocalResource {
+    interface LocalResource extends WxResBase {
         /**需要播放的音频的本地ID,由stopRecord接口获得 */
         localId?: string;
         /**选定照片的本地ID列表,localId可以作为img标签的src属性显示图片 */
         localIds?: Array<string>;
     }
 
-    interface ServerResource {
+    interface ServerResource extends WxResBase {
         /**需要下载的音频的服务器端ID,由uploadVoice接口获得 */
         serverId?: string;
     }
@@ -226,7 +229,7 @@ declare namespace Wechat {
         success?: (res?: LocalResource) => void;
     }
 
-    interface TranslateResource {
+    interface TranslateResource extends WxResBase {
         /**语音识别的结果 */
         translateResult?: string;
     }
@@ -276,7 +279,7 @@ declare namespace Wechat {
         infoUrl?: string;
     }
 
-    interface LocationResource {
+    interface LocationResource extends WxResBase {
         /**纬度,浮点数,范围为90 ~ -90 */
         latitude?: number;
         /**经度,浮点数,范围为180 ~ -180 */
@@ -328,7 +331,7 @@ declare namespace Wechat {
         menuList?: Array<string>;
     }
 
-    interface QRCodeResource {
+    interface QRCodeResource extends WxResBase {
         /**当needResult 为 1 时,扫码返回的结果 */
         resultStr?: string;
     }
@@ -353,7 +356,7 @@ declare namespace Wechat {
         cardExt?: string;
     }
 
-    interface CardResource {
+    interface CardResource extends WxResBase {
         /**卡券列表 */
         cardList?: Array<CardSpecific>;
     }

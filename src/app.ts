@@ -6,22 +6,23 @@ document.onload = () => {
     configData.timestamp = 1234567;
     wx.config(configData);
     wx.ready(() => {
-
+        console.log('wx.ready');
     });
     wx.error((result) => {
-
+        console.log('wx.error');
     });
 
     wx.checkJsApi({
-        jsApiList: new Array<string>(), success: (res) => {
-
-        }
+        jsApiList: new Array<string>(),
+        success: (res) => {
+            console.log('wx.checkJsApi');
+        },
     });
 
     wx.stopRecord({
         success: (res) => {
             console.log(res.localId);
-        }
+        },
     });
 
     let shareData: Wechat.ShareData = {};
@@ -33,7 +34,8 @@ document.onload = () => {
     };
     shareData.cancel = () => {
         console.log('cancelled');
-    }
+    };
+
     wx.onMenuShareTimeline(shareData);
 
     let type: Wechat.NetworkResource = {};
@@ -45,7 +47,7 @@ document.onload = () => {
         if (res.errMsg.indexOf('function not exist') > -1) {
             alert('版本过低请升级');
         }
-    }
+    };
 
     wx.openEnterpriseChat(chatData);
 
