@@ -1,3 +1,5 @@
+declare const wx: Wechat.wx;
+
 declare namespace Wechat {
     interface wx {
         /**注入权限验证配置 */
@@ -457,10 +459,4 @@ declare namespace Wechat {
         /**收货人手机号码 */
         telNumber?: string;
     }
-}
-
-declare var wx: Wechat.wx;
-
-interface Window {
-    wx: Wechat.wx;
 }
