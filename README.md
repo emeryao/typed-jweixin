@@ -1,6 +1,8 @@
 # typed-jweixin
 [TypeScript](http://www.typescriptlang.org/index.html) [declaration file](http://www.typescriptlang.org/docs/handbook/writing-declaration-files.html) for Wexin JSSDK
 
+[![npm](https://img.shields.io/npm/v/typed-jweixin.svg?style=for-the-badge)](https://www.npmjs.com/package/typed-jweixin)
+
 [![PR Welcome](https://img.shields.io/badge/PR-welcome-blue.svg?longCache=true&style=for-the-badge)](https://github.com/Emeryao/typed-jweixin/pulls)
 ![npm type definitions](https://img.shields.io/npm/types/chalk.svg?style=for-the-badge)
 
