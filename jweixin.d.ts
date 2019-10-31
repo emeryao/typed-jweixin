@@ -408,7 +408,7 @@ declare namespace Wechat {
 
     interface WXAddressParam extends WxParamBase {
         success: (res?: WXAddressData) => void;
-        cancel: (res?) => void;
+        cancel: (res?: any) => void;
     }
 
     interface BeaconData extends WxParamBase {
